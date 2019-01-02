@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hi</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<style type="text/css">
+		/*
+	A. Mini Reset 
+*/
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::before,
+::after {
+	content: "";
+}
+
+
+
+/* HARDCOVER FRONT */
+.hardcover_front li:first-child {
+	background: url(https://image.freepik.com/free-vector/beautiful-2019-new-year-card-celebration-background-vector_1035-15385.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-radius:0px 5px 5px 0px;
+	border-r
+}
+
+/* reverse */
+.hardcover_front li:last-child {
+	background-image: linear-gradient(90deg,#284060, #192d46, #071825);
+	-webkit-background-size: 100%;
+}
+
+/* HARDCOVER BACK */
+.hardcover_back li:first-child {
+	background-image: linear-gradient(-90deg, #284060, #192d46, #071825);
+	-webkit-background-size: 100%;
+}
+
+/* reverse */
+.hardcover_back li:last-child {
+	background: transparent;
+}
+
+.book_spine li:first-child {
+	background: rgb(0,0,0);
+	background: rgba(0,0,0, .7);
+	border-radius:5px;
+}
+.book_spine li:last-child {
+	background: transparent;
+}
+
+/* thickness of cover */
+
+.hardcover_front li:first-child:after,
+.hardcover_front li:first-child:before,
+.hardcover_front li:last-child:after,
+.hardcover_front li:last-child:before,
+.hardcover_back li:first-child:after,
+.hardcover_back li:first-child:before,
+.hardcover_back li:last-child:after,
+.hardcover_back li:last-child:before,
+.book_spine li:first-child:after,
+.book_spine li:first-child:before,
+.book_spine li:last-child:after,
+.book_spine li:last-child:before {
+	background: transparent;
+}
+
+/* page */
+
+.page > li {
+	list-style-type: none;
+	background-color: #fff;
+	-webkit-background-size: 100%;
+	border-radius: 0px 5px 5px 0px;
+}
+
+
+/*
+	4. position, transform & transition
+*/
+
+.hardcover_front,
+.hardcover_back,
+.book_spine,
+.hardcover_front li,
+.hardcover_back li,
+.book_spine li {
+	list-style-type: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.hardcover_front,
+.hardcover_back {
+	-webkit-transform-origin: 0% 100%;
+	-moz-transform-origin: 0% 100%;
+	transform-origin: 0% 100%;
+}
+
+.hardcover_front {
+	-webkit-transition: all 0.8s ease, z-index 0.6s;
+	-moz-transition: all 0.8s ease, z-index 0.6s;
+	transition: all 0.8s ease, z-index 0.6s;
+}
+
+/* HARDCOVER front */
+.hardcover_front li:first-child {
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	-webkit-transform: translateZ(2px);
+	-moz-transform: translateZ(2px);
+	transform: translateZ(2px);
+}
+
+.hardcover_front li:last-child {
+	-webkit-transform: rotateY(180deg) translateZ(2px);
+	-moz-transform: rotateY(180deg) translateZ(2px);
+	transform: rotateY(180deg) translateZ(3.8px);
+}
+
+/* HARDCOVER back */
+.hardcover_back li:first-child {
+	-webkit-transform: translateZ(2px);
+	-moz-transform: translateZ(2px);
+	transform: translateZ(2px);
+}
+
+.hardcover_back li:last-child {
+	-webkit-transform: translateZ(-2px);
+	-moz-transform: translateZ(-2px);
+	transform: translateZ(-2px);
+}
+
+/* thickness of cover */
+.hardcover_front li:first-child:after,
+.hardcover_front li:first-child:before,
+.hardcover_front li:last-child:after,
+.hardcover_front li:last-child:before,
+.hardcover_back li:first-child:after,
+.hardcover_back li:first-child:before,
+.hardcover_back li:last-child:after,
+.hardcover_back li:last-child:before,
+.book_spine li:first-child:after,
+.book_spine li:first-child:before,
+.book_spine li:last-child:after,
+.book_spine li:last-child:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* HARDCOVER front */
+.hardcover_front li:first-child:after,
+.hardcover_front li:first-child:before {
+	width: 4px;
+	height: 100%;
+}
+
+.hardcover_front li:first-child:after {
+	-webkit-transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+	-moz-transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+	transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+}
+
+.hardcover_front li:first-child:before {
+	-webkit-transform: rotateY(90deg) translateZ(158px) translateX(2px);
+	-moz-transform: rotateY(90deg) translateZ(158px) translateX(2px);
+	transform: rotateY(90deg) translateZ(158px) translateX(2px);
+}
+
+.hardcover_front li:last-child:after,
+.hardcover_front li:last-child:before {
+	width: 4px;
+	height: 160px;
+}
+
+.hardcover_front li:last-child:after {
+	-webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(80px) translateX(-2px) translateY(-78px);
+	-moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(80px) translateX(-2px) translateY(-78px);
+	transform: rotateX(90deg) rotateZ(90deg) translateZ(80px) translateX(-2px) translateY(-78px);
+}
+.hardcover_front li:last-child:before {
+	height: 240px;
+	width: 0px;
+	-webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(-2px) translateY(-78px);
+	-moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(-2px) translateY(-78px);
+	transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(-2px) translateY(-78px);
+}
+
+/* thickness of cover */
+
+.hardcover_back li:first-child:after,
+.hardcover_back li:first-child:before {
+	width: 4px;
+	height: 100%;
+}
+
+.hardcover_back li:first-child:after {
+	-webkit-transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+	-moz-transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+	transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+}
+.hardcover_back li:first-child:before {
+	-webkit-transform: rotateY(90deg) translateZ(158px) translateX(2px);
+	-moz-transform: rotateY(90deg) translateZ(158px) translateX(2px);
+	transform: rotateY(90deg) translateZ(158px) translateX(2px);
+}
+
+.hardcover_back li:last-child:after,
+.hardcover_back li:last-child:before {
+	width: 4px;
+	height: 160px;
+}
+
+.hardcover_back li:last-child:after {
+	-webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(80px) translateX(2px) translateY(-78px);
+	-moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(80px) translateX(2px) translateY(-78px);
+	transform: rotateX(90deg) rotateZ(90deg) translateZ(80px) translateX(2px) translateY(-78px);
+}
+
+.hardcover_back li:last-child:before {
+	-webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(2px) translateY(-78px);
+	-moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(2px) translateY(-78px);
+	transform: rotateX(90deg) rotateZ(90deg) translateZ(-140px) translateX(2px) translateY(-78px);
+}
+
+/* BOOK SPINE */
+.book_spine {
+	-webkit-transform: rotateY(60deg) translateX(-5px) translateZ(-12px);
+	-moz-transform: rotateY(60deg) translateX(-5px) translateZ(-12px);
+	transform: rotateY(60deg) translateX(-5px) translateZ(-12px);
+	width: 16px;
+	z-index: 0;
+}
+
+.book_spine li:first-child {
+	-webkit-transform: translateZ(2px);
+	-moz-transform: translateZ(2px);
+	transform: translateZ(2px);
+}
+
+.book_spine li:last-child {
+	-webkit-transform: translateZ(-2px);
+	-moz-transform: translateZ(-2px);
+	transform: translateZ(-2px);
+}
+
+/* thickness of book spine */
+.book_spine li:first-child:after,
+.book_spine li:first-child:before {
+	width: 4px;
+	height: 100%;
+}
+
+.book_spine li:first-child:after {
+	-webkit-transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+	-moz-transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+	transform: rotateY(90deg) translateZ(-2px) translateX(2px);
+}
+
+.book_spine li:first-child:before {
+	-webkit-transform: rotateY(-90deg) translateZ(-12px);
+	-moz-transform: rotateY(-90deg) translateZ(-12px);
+	transform: rotateY(-90deg) translateZ(-12px);
+}
+
+.book_spine li:last-child:after,
+.book_spine li:last-child:before {
+	width: 4px;
+	height: 16px;
+}
+
+.book_spine li:last-child:after {
+	-webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(8px) translateX(2px) translateY(-6px);
+	-moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(8px) translateX(2px) translateY(-6px);
+	transform: rotateX(90deg) rotateZ(90deg) translateZ(8px) translateX(2px) translateY(-6px);
+}
+
+.book_spine li:last-child:before {
+	-webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(-210px) translateX(2px) translateY(-6px);
+	-moz-transform: rotateX(90deg) rotateZ(90deg) translateZ(-210px) translateX(2px) translateY(-6px);
+	transform: rotateX(90deg) rotateZ(90deg) translateZ(-210px) translateX(2px) translateY(-6px);
+}
+
+.page,
+.page > li {
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.page {
+	width: 100%;
+	height: 90%;
+	top: 5%;
+	left: 3%;
+	z-index: 10;
+}
+
+.page > li {
+	width: 100%;
+	height: 100%;
+	-webkit-transform-origin: left center;
+	-moz-transform-origin: left center;
+	transform-origin: left center;
+	-webkit-transition-property: transform;
+	-moz-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-timing-function: ease;
+	-moz-transition-timing-function: ease;
+	transition-timing-function: ease;
+}
+
+
+
+/*
+	5. events
+*/
+
+
+.book {
+	position: relative;
+	margin: 50px auto;
+	width: 280px;
+	height: 300px;
+	-webkit-perspective: 1500px;
+	-moz-perspective: 1500px;
+	perspective: 1500px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-animation: move 0.5s linear 1 forwards 1.5s;
+}
+
+
+/*
+	3. opening cover, back cover and pages
+*/
+.hardcover_front {
+	height: 80vh;
+	width: 55vh;
+	-webkit-transform: rotateY(-34deg) translateZ(8px);
+	-moz-transform: rotateY(-34deg) translateZ(8px);
+	transform: rotateY(-34deg) translateZ(8px);
+	z-index: 100;
+}
+.hardcover_front:hover {
+	-webkit-transform: rotateY(-34deg) translateZ(8px);
+	-moz-transform: rotateY(-34deg) translateZ(8px);
+	transform: rotateY(-34deg) translateZ(8px);
+	z-index: 100;
+	-webkit-animation: frontOpen linear 1 forwards 1.5s;
+}
+
+.hardcover_back {
+	-webkit-transform: rotateY(-15deg) translateZ(-8px);
+	-moz-transform: rotateY(-15deg) translateZ(-8px);
+	transform: rotateY(-15deg) translateZ(-8px);
+	height: 80.5vh;
+	width: 55vh;
+}
+
+/* -- Open Page -- */
+.page li:nth-child(3) {
+	-webkit-transform: rotateY(-32deg);
+	-moz-transform: rotateY(-32deg);
+	transform: rotateY(-32deg);
+	
+}
+
+/* -- Page 1 -- */
+.page li:nth-child(7) {
+	-webkit-transform: rotateY(-36deg);
+	-moz-transform: rotateY(-36deg);
+	transform: rotateY(-36deg);
+	-webkit-animation: pageOne 0.75s linear 1 forwards 3s;
+}
+
+
+/* ------------------ PAGE CONTENT --------------------- */		
+
+span.nav-next {
+	color:#bf0000;
+}
+
+span.nav-prev {
+	color: #8e0000;
+}
+
+span.nav-contents {
+	color: #0036db;
+	float: right;
+}
+
+.page-num {
+	width: 300px;
+}
+
+.page-num h1 {
+	padding: 20px;
+	height: 50px;
+}
+
+.bk-content {
+	background-color: #fff;
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+
+.page .firstPage{
+	width: 99%;
+	height: 99%;
+	padding: 5%;
+	font-size: 0.9em;
+	background-color: #fff;
+}
+
+
+
+/* ------------------------ ANIMATION -------------------------- */
+
+@-webkit-keyframes move {
+  from {
+  	-webkit-transform: translate(0px);
+  }
+  to {
+  	-webkit-transform: translate(150px);
+  }
+}
+
+
+@-webkit-keyframes frontOpen {
+	from {
+	-webkit-transform: rotateY(-34deg) translateZ(1px);
+	z-index: 100;
+	}
+	
+	to {
+		-webkit-transform: rotateY(-145deg) translateZ(0);
+		z-index: 0;
+	}
+}
+
+/* -- page 1 -- */
+@-webkit-keyframes pageOne {
+	from {
+	-webkit-transform: rotateY(-30deg);
+	}
+	
+	to {
+	-webkit-transform: rotateY(-143deg);
+	}
+}
+.content_2{
+	color: white;
+
+}
+.content_2 div{
+	margin-top: 150px;
+	padding-left: 60px;
+}
+.content_1{
+	color: white;
+}
+.content_1 div{
+	margin-top: 200px;
+}
+</style>
+</head>
+<body>
+
+<figure class='book' id="book">
+
+<!-- Front -->
+
+<ul class='hardcover_front' id="hardcover_front">
+<li>
+	<div class="page-num">
+	</div>
+</li>
+<li class="content_1">
+	<div class="container">
+		<h2>Dear Mr.Wilson</h2><br>
+		<p>I just want to say you something I never get to say to you, which is to thank you for all the thing you have done for me for the last 2 years. Thank you for listening for my ideas that my sister was tired of hearing.</p>
+	</div>
+	
+</li>
+</ul>
+
+
+<!-- Back -->
+
+<ul class='hardcover_back'>
+<li class="content_2">
+	<center><img src="https://i.pinimg.com/originals/b9/ac/08/b9ac084531ab178f59c96c83e2fdf8c8.gif" style="width: 100%;"></center>
+	<div>	
+		<h3>  To: <u>Mr.Wilson</u></h1><br><br>
+		<h3>From: <u>Rediet Tadesse</u></h1>
+	</div>
+
+</li>
+<li></li>
+</ul>
+<ul class='book_spine'>
+<li></li>
+<li></li>
+</ul>
+
+</figure>
+
+
+<audio id="p">
+  <source src="file:///Users/rediettadesse/Desktop/Brooklyn%20accent.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script type="text/javascript">
+	document.getElementById("p").play().catch(function() {
+
+	});
+</script>
+</body>
+</html>
